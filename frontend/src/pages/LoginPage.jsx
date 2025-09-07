@@ -1,5 +1,5 @@
 import { Eye, EyeOff, Loader2, Lock, Mail, MessageSquare } from "lucide-react";
-import { userAuthStore } from "../Store/UseAuthStore"
+import { userAuthStore } from "../Store/useAuthStore"
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import MainBg from "../components/MainBg"
