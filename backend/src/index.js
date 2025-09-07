@@ -27,13 +27,17 @@ app.use("/api/auth", authRoutes)
 app.use("/api/messages", messageRoutes)
 app.use("/api/friends", friendsRoutes)  
 
-if(process.env.NODE_ENV==="production"){
-    app.use(express.static(path.join(__dirname, "../frontend/dist")))
+if (process.env.NODE_ENV === "production") {
+  const frontendPath = path.join(__dirname, "../frontend/dist");
+  console.log("Serving static from:", frontendPath);
+  app.use(express.static(frontendPath));
 
-    app.get("*",(req,res)=>{
-        res.sendFile(path.join(__dirname,"../frontend","dist","index.html"))
-    })
+  app.get("*", (req, res) => {
+    console.log("Sending index.html from:", path.join(frontendPath, "index.html"));
+    res.sendFile(path.join(frontendPath, "index.html"));
+  });
 }
+
 
 
 //not now app.listen , its the server now , we will directly communicate with server
